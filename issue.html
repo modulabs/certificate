@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MODUCON 2025 인증서 | 모두의연구소</title>
+  <meta name="description" content="'모두콘 2025'의 공식 서포터즈/AI TF 활동을 증명하는 인증서입니다. AI 기술 커뮤니티 확산과 컨퍼런스 운영 지원을 통해 기여한 성과를 담고 있습니다.">
+  <meta property="og:title" content="MODUCON 2025 인증서 | 모두의연구소">
+  <meta property="og:description" content="'모두콘 2025'의 공식 서포터즈/AI TF 활동을 증명하는 인증서입니다. AI 기술 커뮤니티 확산과 컨퍼런스 운영 지원을 통해 기여한 성과를 담고 있습니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://modulabs.github.io/certificate/meta-image.png">
+  <meta property="og:url" content="https://modulabs.github.io/certificate/issue.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MODUCON 2025 인증서 | 모두의연구소">
+  <meta name="twitter:description" content="'모두콘 2025'의 공식 서포터즈/AI TF 활동을 증명하는 인증서입니다.">
+  <meta name="twitter:image" content="https://modulabs.github.io/certificate/meta-image.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Verification Screen -->
+    <div class="screen" id="verifyScreen">
+      <div class="verify-card">
+        <div class="verify-header">
+          <img src="svg/moducon.svg" alt="MODUCON 2025" class="verify-logo">
+          <p>증명서 조회</p>
+        </div>
+
+        <div class="verify-form">
+          <div class="form-group">
+            <label for="nameInput">이름</label>
+            <input type="text" id="nameInput" placeholder="이름을 입력하세요">
+          </div>
+          <div class="form-group">
+            <label for="phoneInput">전화번호 뒷자리 4자리</label>
+            <input type="text" id="phoneInput" placeholder="0000" maxlength="4" pattern="[0-9]{4}">
+          </div>
+          <button class="btn-verify" id="verifyBtn">확인하기</button>
+          <p class="error-message" id="errorMessage"></p>
+        </div>
+
+        <div class="verify-footer">
+          <p>본인 확인을 위해 이름과 전화번호 뒷자리를 입력해주세요.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate Screen -->
+    <div class="screen hidden" id="certificateScreen">
+      <div class="certificate-wrapper">
+        <!-- Certificate from Figma -->
+        <div class="certificate" id="certificate">
+          <div class="certificate-frame">
+            <!-- Top corners -->
+            <div class="corner-row">
+              <div class="corner corner-tl"><div class="corner-box"></div></div>
+              <div class="corner-line"></div>
+              <div class="corner corner-tr"><div class="corner-box"></div></div>
+            </div>
+
+            <!-- Main content -->
+            <div class="certificate-content">
+              <!-- Watermark -->
+              <img src="svg/watermark.svg" alt="" class="watermark">
+
+              <!-- Header -->
+              <div class="cert-header">
+                <div class="cert-title">Certificate of Completion</div>
+                <div class="cert-subtitle">MODUCON 2025</div>
+              </div>
+
+              <!-- Body -->
+              <div class="cert-body">
+                <div class="cert-name" id="recipientName">홍길동</div>
+                <div class="cert-name-line"></div>
+                <div class="cert-description">
+                  위 사람은 모두의연구소 "<span id="programType">모두콘 2025 AI TF</span>"를 성공적으로 활동하였습니다.<br/>
+                  활동 기간 : <span id="activityPeriod">2025.03.01 - 2025.05.30</span>
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div class="cert-footer">
+                <div class="signature-area">
+                  <div class="signature-img">
+                    <img src="svg/_레이어_1.svg" alt="서명">
+                  </div>
+                  <div class="signature-line"></div>
+                  <div class="signature-name">모두의연구소 소장 김승일</div>
+                </div>
+
+                <div class="issue-area">
+                  <span>Issued on <span id="issueDate">December 19, 2025</span> · ID: <span id="certificateId">MODUCON-2025-01</span></span>
+                </div>
+
+                <div class="badge-area">
+                  <img src="svg/Group 2612066.svg" alt="모두의연구소" class="badge-img">
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom corners -->
+            <div class="corner-row corner-row-bottom">
+              <div class="corner corner-bl"><div class="corner-box"></div></div>
+              <div class="corner-line"></div>
+              <div class="corner corner-br"><div class="corner-box"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="certificate-actions">
+          <button class="btn btn-download" id="downloadBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><path d="M7 11l5 5l5 -5"></path><path d="M12 4l0 12"></path></svg>
+            <span>다운로드</span>
+          </button>
+          <button class="btn btn-share" id="shareBtn">
+            <img src="Button/icon.svg" alt="공유하기" class="btn-icon">
+            <span>공유하기</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Not Found Screen -->
+    <div class="screen hidden" id="notFoundScreen">
+      <div class="not-found-card">
+        <div class="not-found-icon">❌</div>
+        <h2>인증서를 찾을 수 없습니다</h2>
+        <p>올바른 URL인지 확인해주세요.</p>
+        <a href="./" class="btn btn-home">홈으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
