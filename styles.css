@@ -156,7 +156,8 @@ body {
 }
 
 .certificate-frame {
-  align-self: stretch;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   padding: 10px;
   position: relative;
   background: white;
@@ -164,7 +165,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
 }
 
 /* Corner decorations */
@@ -213,16 +215,18 @@ body {
 
 /* Certificate content */
 .certificate-content {
-  padding: 120px 120px 80px 120px;
+  flex: 1;
+  padding: 80px 100px 60px 100px;
   background: white;
   border-left: 1px #CDD1D6 solid;
   border-right: 1px #CDD1D6 solid;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  gap: 100px;
   position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* Watermark */
@@ -233,7 +237,7 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.45;
+  opacity: 0.65;
   pointer-events: none;
 }
 
@@ -505,88 +509,52 @@ body {
 /* ==================== */
 /* Responsive Design    */
 /* ==================== */
-@media (max-width: 1100px) {
+
+/* ==================== */
+/* Three Fixed Sizes    */
+/* Desktop / Tablet / Mobile */
+/* ==================== */
+
+/* Desktop: 1032px (default - no transform needed) */
+.certificate-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tablet: 720px width */
+@media (max-width: 1072px) {
   .certificate {
-    width: 100%;
+    transform: scale(0.698); /* 720 / 1032 */
+    transform-origin: top center;
+    margin-bottom: calc(-688px * (1 - 0.698)); /* Adjust for scaled height (3:2 ratio) */
   }
 
-  .certificate-content {
-    padding: 80px 60px 60px 60px;
-    gap: 60px;
-  }
-
-  .cert-title {
-    font-size: 40px;
-    line-height: 40px;
-  }
-
-  .cert-subtitle {
-    font-size: 26px;
-    line-height: 26px;
+  .certificate-actions {
+    max-width: 720px;
   }
 }
 
-@media (max-width: 768px) {
-  .certificate-content {
-    padding: 60px 30px 40px 30px;
-    gap: 40px;
+/* Mobile: 360px width */
+@media (max-width: 760px) {
+  .container {
+    padding: 16px;
   }
 
-  .cert-title {
-    font-size: 28px;
-    line-height: 32px;
-  }
-
-  .cert-subtitle {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .cert-name {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  .cert-footer {
-    flex-direction: column;
-    height: auto;
-    gap: 30px;
-    align-items: center;
-  }
-
-  .signature-area,
-  .issue-area,
-  .badge-area {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-  }
-
-  .signature-img {
-    position: relative;
-    top: 0;
-    margin-bottom: 8px;
-  }
-
-  .badge-img {
-    width: 100px;
-    height: 100px;
+  .certificate {
+    transform: scale(0.349); /* 360 / 1032 */
+    transform-origin: top center;
+    margin-bottom: calc(-688px * (1 - 0.349)); /* Adjust for scaled height (3:2 ratio) */
   }
 
   .certificate-actions {
     flex-direction: column;
-    width: 100%;
+    max-width: 360px;
   }
 
   .btn {
     width: 100%;
     justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 16px;
   }
 
   .verify-card {
@@ -595,30 +563,6 @@ body {
 
   .verify-header h1 {
     font-size: 1.5rem;
-  }
-
-  .certificate-content {
-    padding: 40px 20px 30px 20px;
-  }
-
-  .cert-title {
-    font-size: 22px;
-    line-height: 26px;
-  }
-
-  .cert-subtitle {
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  .cert-name {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .cert-description {
-    font-size: 12px;
-    line-height: 18px;
   }
 }
 
@@ -703,13 +647,11 @@ body {
 
   /* Certificate sizing - fit to page while maintaining aspect ratio */
   .certificate {
-    width: auto !important;
-    max-width: 100% !important;
+    width: 1032px !important;
     height: auto !important;
-    max-height: 100vh !important;
     transform-origin: center center !important;
-    /* Scale to 90% for optimal fit */
     transform: scale(0.90) !important;
+    margin-bottom: 0 !important;
   }
 
   .certificate-frame {
@@ -719,6 +661,7 @@ body {
 
   .certificate-content {
     background: white !important;
+    overflow: visible !important;
   }
 
   /* Ensure watermark prints */
