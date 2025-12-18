@@ -535,21 +535,22 @@ body {
   }
 }
 
-/* Mobile: 360px width */
+/* Mobile: fill available width */
 @media (max-width: 760px) {
   .container {
     padding: 16px;
   }
 
   .certificate {
-    transform: scale(0.349); /* 360 / 1032 */
+    transform: scale(calc((100vw - 32px) / 1032));
     transform-origin: top center;
-    margin-bottom: calc(-688px * (1 - 0.349)); /* Adjust for scaled height (3:2 ratio) */
+    margin-bottom: calc(-688px * (1 - (100vw - 32px) / 1032)); /* Adjust for scaled height (3:2 ratio) */
   }
 
   .certificate-actions {
     flex-direction: column;
-    max-width: 360px;
+    width: calc(100vw - 32px);
+    max-width: 500px;
   }
 
   .btn {
