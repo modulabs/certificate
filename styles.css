@@ -539,25 +539,23 @@ body {
 @media (max-width: 760px) {
   .container {
     padding: 16px;
-    overflow-x: hidden;
   }
 
   .certificate-wrapper {
     width: 100%;
-    overflow: hidden;
+    align-items: center;
   }
 
   .certificate {
-    --scale: calc((100vw - 32px) / 1032);
-    transform: scale(var(--scale));
+    transform: scale(0.33);
     transform-origin: top center;
-    margin-bottom: calc(-688px * (1 - var(--scale))); /* Adjust for scaled height (3:2 ratio) */
+    margin-bottom: -460px;
   }
 
   .certificate-actions {
     flex-direction: column;
-    width: calc(100vw - 32px);
-    max-width: 500px;
+    width: 100%;
+    max-width: 343px;
   }
 
   .btn {
