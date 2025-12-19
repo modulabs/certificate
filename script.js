@@ -4,7 +4,7 @@ const certificateScreen = document.getElementById('certificateScreen');
 const notFoundScreen = document.getElementById('notFoundScreen');
 
 const nameInput = document.getElementById('nameInput');
-const phoneInput = document.getElementById('phoneInput');
+const codeInput = document.getElementById('phoneInput'); // Using same ID, now for verification code
 const verifyBtn = document.getElementById('verifyBtn');
 const errorMessage = document.getElementById('errorMessage');
 
@@ -37,8 +37,8 @@ function init() {
     // Check if certificate exists
     if (CERTIFICATE_DATA[currentCertificateId]) {
       currentCertificateData = CERTIFICATE_DATA[currentCertificateId];
-      // Show certificate directly when ID is in URL
-      showCertificate(currentCertificateId, currentCertificateData);
+      // Show verification screen to verify access
+      showScreen('verify');
     } else {
       showScreen('notFound');
     }
@@ -71,7 +71,7 @@ function showScreen(screenName) {
 // Verify credentials
 function verifyCertificate() {
   const name = nameInput.value.trim();
-  const phone = phoneInput.value.trim();
+  const code = codeInput.value.trim().toLowerCase();
 
   // Validation
   if (!name) {
@@ -80,28 +80,35 @@ function verifyCertificate() {
     return;
   }
 
-  if (!phone || phone.length !== 4 || !/^\d{4}$/.test(phone)) {
-    showError('전화번호 뒷자리 4자리를 정확히 입력해주세요.');
-    phoneInput.focus();
+  if (!code) {
+    showError('인증 코드를 입력해주세요.');
+    codeInput.focus();
+    return;
+  }
+
+  // Check verification code
+  if (code !== VERIFICATION_CODE) {
+    showError('인증 코드가 올바르지 않습니다.');
+    codeInput.focus();
     return;
   }
 
   // If we have a specific certificate ID from URL
   if (currentCertificateId && currentCertificateData) {
-    if (currentCertificateData.name === name && currentCertificateData.phone === phone) {
+    if (currentCertificateData.name === name) {
       showCertificate(currentCertificateId, currentCertificateData);
     } else {
-      showError('이름 또는 전화번호가 일치하지 않습니다.');
+      showError('이름이 일치하지 않습니다.');
     }
     return;
   }
 
-  // Search for matching certificate (no specific ID)
+  // Search for matching certificate by name (no specific ID)
   let foundId = null;
   let foundData = null;
 
   for (const [id, data] of Object.entries(CERTIFICATE_DATA)) {
-    if (data.name === name && data.phone === phone) {
+    if (data.name === name) {
       foundId = id;
       foundData = data;
       break;
@@ -251,7 +258,7 @@ function showToast(message) {
 function goBack() {
   // Clear inputs
   nameInput.value = '';
-  phoneInput.value = '';
+  codeInput.value = '';
   clearError();
 
   // Clear URL parameter
@@ -272,23 +279,18 @@ function goBack() {
 verifyBtn.addEventListener('click', verifyCertificate);
 
 nameInput.addEventListener('input', clearError);
-phoneInput.addEventListener('input', clearError);
+codeInput.addEventListener('input', clearError);
 
 nameInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    phoneInput.focus();
+    codeInput.focus();
   }
 });
 
-phoneInput.addEventListener('keypress', (e) => {
+codeInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     verifyCertificate();
   }
-});
-
-// Only allow numbers in phone input
-phoneInput.addEventListener('input', (e) => {
-  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
 });
 
 downloadBtn.addEventListener('click', downloadCertificate);
