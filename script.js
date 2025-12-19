@@ -37,8 +37,8 @@ function init() {
     // Check if certificate exists
     if (CERTIFICATE_DATA[currentCertificateId]) {
       currentCertificateData = CERTIFICATE_DATA[currentCertificateId];
-      // Show verification screen to verify access
-      showScreen('verify');
+      // Show certificate directly when ID is in URL
+      showCertificate(currentCertificateId, currentCertificateData);
     } else {
       showScreen('notFound');
     }
